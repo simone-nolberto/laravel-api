@@ -48,9 +48,14 @@ class ProjectController extends Controller
         $validated['slug'] = $slug;
 
         if ($request->has('cover_image')) {
-            $img_path = Storage::put('uploads', $validated['cover_image']);
 
-            $validated['cover_image'] = $img_path;
+            if (str_starts_with($request->cover_image, 'http://')) {
+                $validated['cover_image'] = $request->cover_image;
+            } else {
+                $img_path = Storage::put('uploads', $validated['cover_image']);
+
+                $validated['cover_image'] = $img_path;
+            }
         }
 
         // dd($validated);
@@ -80,7 +85,6 @@ class ProjectController extends Controller
         $technologies = Technology::all();
 
         return view('admin.projects.edit', compact('project', 'types', 'technologies'));
-
     }
 
     /**
