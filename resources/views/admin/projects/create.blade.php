@@ -53,18 +53,39 @@
 
 
 
-            <div class="mb-3">
-                <label for="cover_image" class="form-label">cover_image</label>
-                <input type="file" class="form-control" name="cover_image" id="cover_image"
-                    aria-describedby="cover_imageHelper" placeholder="Your post cover_image" />
-                <small id="helpId" class="form-text text-muted">Add an image here</small>
+            <div class="row">
+                <div class="col">
+                    <div class="mb-3">
+                        <label for="cover_image" class="form-label">cover_image</label>
+                        <input type="file" class="form-control" name="cover_image" id="cover_image"
+                            aria-describedby="cover_imageHelper" placeholder="Your post cover_image" />
 
-                @error('cover_image')
-                    <div class="text-danger py-2">
 
-                        {{ $message }}
+                        @error('cover_image')
+                            <div class="text-danger py-2">
+
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
-                @enderror
+                </div>
+
+                <div class="col">
+                    <div class="mb-3">
+                        <label for="cover_image" class="form-label">cover_image</label>
+                        <input type="text" class="form-control" name="cover_image" id="cover_image"
+                            aria-describedby="cover_imageHelper" placeholder="Paste a link here" />
+
+
+                        @error('cover_image')
+                            <div class="text-danger py-2">
+
+                                {{ $message }}
+                            </div>
+                        @enderror
+                    </div>
+                </div>
+                <small id="helpId" class="form-text text-muted">Add an image here</small>
             </div>
 
 
@@ -91,8 +112,10 @@
 
 
             <div class="d-flex gap-3 my-5">
+
                 @foreach ($technologies as $technology)
                     <div class="form-check">
+
                         <input name="technologies[]" class="form-check-input" type="checkbox" value="{{ $technology->id }}"
                             id="{{ $technology->id }}" />
                         <label class="form-check-label" for="{{ $technology->id }}"> {{ $technology->name }} </label>

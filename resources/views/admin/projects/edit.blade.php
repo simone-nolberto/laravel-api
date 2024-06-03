@@ -51,21 +51,39 @@
                 @enderror
             </div>
 
+            <div class="row">
+                <div class="col">
+                    <div class="mb-3">
+                        <label for="cover_image" class="form-label">cover_image</label>
+                        <input type="file" class="form-control" name="cover_image" id="cover_image"
+                            aria-describedby="cover_imageHelper" placeholder="Your post cover_image" />
 
 
-            <div class="mb-3">
-                <label for="cover_image" class="form-label">cover_image</label>
-                <input type="file" class="form-control" name="cover_image" id="cover_image"
-                    aria-describedby="cover_imageHelper" value="{{ $project->cover_image }}"
-                    placeholder="Your post cover_image" />
-                <small id="helpId" class="form-text text-muted">Add an image here</small>
+                        @error('cover_image')
+                            <div class="text-danger py-2">
 
-                @error('cover_image')
-                    <div class="text-dange py-2">
-
-                        {{ $message }}
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
-                @enderror
+                </div>
+
+                <div class="col">
+                    <div class="mb-3">
+                        <label for="cover_image" class="form-label">cover_image</label>
+                        <input type="text" class="form-control" name="cover_image" id="cover_image"
+                            aria-describedby="cover_imageHelper" placeholder="Paste a link here" />
+
+
+                        @error('cover_image')
+                            <div class="text-danger py-2">
+
+                                {{ $message }}
+                            </div>
+                        @enderror
+                    </div>
+                </div>
+                <small id="helpId" class="form-text text-muted">Add an image here</small>
             </div>
 
 
