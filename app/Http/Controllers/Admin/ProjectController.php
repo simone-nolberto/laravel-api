@@ -49,8 +49,8 @@ class ProjectController extends Controller
 
         if ($request->has('cover_image')) {
 
-            if (str_starts_with($request->cover_image, 'http://')) {
-                dd($request->cover_image);
+            if (str_starts_with($request->cover_image, 'http://') || str_starts_with($request->cover_image, 'https://')) {
+                // dd($request->cover_image);
                 $validated['cover_image'] = $request->cover_image;
             } else {
                 $img_path = Storage::put('uploads', $validated['cover_image']);
