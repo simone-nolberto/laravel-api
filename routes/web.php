@@ -6,6 +6,8 @@ use App\Http\Controllers\Admin\TypeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TechnologyController;
 use Illuminate\Support\Facades\Route;
+use App\Mail\NewLeadMessageMd;
+use App\Models\Lead;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +22,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+
+Route::get('/mailable', function () {
+
+    $lead = Lead::find(1);
+
+    return new NewLeadMessageMd($lead);
 });
 
 Route::middleware(['auth', 'verified'])
@@ -52,4 +62,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
