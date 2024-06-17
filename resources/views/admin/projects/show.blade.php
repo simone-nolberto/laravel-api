@@ -18,9 +18,9 @@
         <div class="row row-cols-1 row-cols-md-2 g-4">
             <div class="col">
                 @if (Str::startsWith($project->cover_image, 'https://'))
-                    <img width="140" src="{{ $project->cover_image }}" alt="">
+                    <img width="140" loading="lazy" src="{{ $project->cover_image }}" alt="">
                 @else
-                    <img width="140" src="{{ asset('storage/' . $project->cover_image) }}" alt="">
+                    <img width="140" loading="lazy" src="{{ asset('storage/' . $project->cover_image) }}" alt="">
                 @endif
             </div>
 
